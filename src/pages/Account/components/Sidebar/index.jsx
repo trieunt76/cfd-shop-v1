@@ -1,6 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authLogout } from "../../../../redux/reducers/authReducer";
+// import { actAuthLogout } from "../../../../redux/reducers/authReducer";
 
 const Sidebar = () => {
+	let dispatch = useDispatch();
+
+	/**
+	 * handleLogout === _logoutClick
+	 */
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(authLogout());
+	};
 	return (
 		<div className="col-12 col-md-3">
 			{/* Nav */}
@@ -39,6 +51,7 @@ const Sidebar = () => {
 					<a
 						className="list-group-item list-group-item-action dropright-toggle"
 						href="#!"
+						onClick={handleLogout}
 					>
 						Logout
 					</a>

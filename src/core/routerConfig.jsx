@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import { PrivateRouter } from "./";
 
 const renderRouters = (routers, pathParrent = "") => {
 	return (
@@ -9,6 +10,7 @@ const renderRouters = (routers, pathParrent = "") => {
 					path,
 					component: Component,
 					routers: childRouters,
+					auth,
 				} = e;
 				if (!path) path = "";
 				path = pathParrent + "/" + path;
@@ -18,17 +20,18 @@ const renderRouters = (routers, pathParrent = "") => {
 					children = renderRouters(childRouters, path);
 				}
 
-				// if (auth) {
-				// 	return (
-				// 		<PrivateRouter
-				// 			exact={exact}
-				// 			path={path}
-				// 			component={(prop) => (
-				// 				<Component {...prop}>{children}</Component>
-				// 			)}
-				// 		/>
-				// 	);
-				// }
+				if (auth) {
+					return (
+						<PrivateRouter
+							key={index}
+							exact={exact}
+							path={path}
+							component={(prop) => (
+								<Component {...prop}>{children}</Component>
+							)}
+						/>
+					);
+				}
 
 				return (
 					<Route

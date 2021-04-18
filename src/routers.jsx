@@ -19,8 +19,22 @@ const routers = [
 		component: MainLayout,
 		routers: [
 			{
+				path: "/contact",
+				component: ContactUs,
+			},
+			{
+				path: "/",
+				exact: true,
+				component: Home,
+			},
+			{
 				path: "/about",
 				component: About,
+			},
+			{
+				path: "/account",
+				component: Account,
+				auth: true,
 			},
 			{
 				path: "/account",
@@ -65,20 +79,6 @@ const routers = [
 			{
 				path: "*",
 				component: PageNotFound,
-			},
-		],
-	},
-	{
-		component: HomeLayout,
-		routers: [
-			{
-				path: "/contact",
-				component: ContactUs,
-			},
-			{
-				path: "/",
-				exact: true,
-				component: Home,
 			},
 		],
 	},

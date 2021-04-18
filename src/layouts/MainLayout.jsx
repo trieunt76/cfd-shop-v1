@@ -1,12 +1,11 @@
 import React from "react";
-import { Header, Footer, Features } from "../components";
+import { Footer, Header } from "../components";
 
 const MainLayout = ({ children }) => {
 	return (
 		<>
 			<Header />
 			{children}
-			<Features />
 			<Footer />
 		</>
 	);
